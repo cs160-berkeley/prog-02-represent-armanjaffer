@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">represent</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="title_activity_sen_1">sen_1</string>
+    <string name="title_activity_sen_2">sen_2</string>
+    <string name="title_activity_rep">rep</string>
+    <string name="title_activity_votes">votes</string>
+</resources>
