@@ -1,18 +1,26 @@
 # PROG 02: Represent!
 
-Briefly describe your app here.
+Represent is a political smart watch and phone app that lets you see congress people that represent either A) your current location B) a manual location of your choosing or C) a random location.
+
 
 ## Authors
 
-FirstName LastName ([your_email@berkeley.edu](mailto:your_email@berkeley.edu))
+FirstName LastName (arman@berkeley.edu](mailto:your_email@berkeley.edu))
 
 ## Demo Video
 
-See [your demo video title here] (https://link_to_your_video)
+See [2 C] (https://www.youtube.com/watch?v=hzDOn9RgdRk&feature=youtu.be)
 
 ## Screenshots
 
-<img src="screenshots/main.png" height="400" alt="Screenshot"/>
+
+<img src="screenshots/honda.png" height="400" alt="Screenshot"/>
+
+<img src="screenshots/big_f.png" height="400" alt="Screenshot"/>
+<img src="screenshots/big_b.png" height="400" alt="Screenshot"/>
+<img src="screenshots/pres.png" height="400" alt="Screenshot"/>
+<img src="screenshots/rep_watch.png" height="400" alt="Screenshot"/>
+<img src="screenshots/home.png" height="400" alt="Screenshot"/>
 
 ## Acknowledgments
 
