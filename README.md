@@ -5,7 +5,7 @@ Represent is a political smart watch and phone app that lets you see congress pe
 
 ## Authors
 
-Arman Jaffer [arman@berkeley.edu](mailto:your_email@berkeley.edu))
+Arman Jaffer [arman@berkeley.edu](mailto:your_email@berkeley.edu)
 
 ## Demo Video
 
