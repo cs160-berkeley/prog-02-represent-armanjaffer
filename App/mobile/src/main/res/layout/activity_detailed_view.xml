@@ -1,81 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/layout"
-    android:background="#4180D6"
+    android:background="@drawable/cap"
     android:layout_margin="2dp"
     tools:context="com.cs160.arman.represent.detailed_view">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="represent"
-        android:id="@+id/textView"
+        android:text="NAME"
+        android:id="@+id/name"
         android:layout_gravity="center"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:textColor="#FFF"
         android:layout_marginTop="20dp" />
 
 
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="3dp">
+
+
     <ImageView
         android:layout_gravity="center"
-        android:id="@+id/imageView"
+        android:id="@+id/imageview"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
         android:src="@drawable/issa" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="represent"
-        android:id="@+id/textView1"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:textColor="#FFF" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+        <!--android:text="PARTY"-->
+        <!--android:id="@+id/party"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:textColor="#FFF" />-->
+
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="represent"
-        android:id="@+id/textView2"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:textColor="#FFF" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="represent"
-        android:id="@+id/textView3"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:textColor="#FFF" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="represent"
-        android:id="@+id/textView4"
+        android:text="TERM_END"
+        android:background="#AA65737e"
+        android:gravity="left"
+        android:id="@+id/term_end"
+        android:layout_alignParentRight="true"
         android:layout_gravity="center"
         android:textSize="15sp"
         android:textColor="#FFF" />
 
+        </RelativeLayout>
+
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical"
+         android:layout_marginTop="10dp"
+         android:background="#AA65737e">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="represent"
-        android:id="@+id/textView5"
+        android:text="Committees"
+        android:id="@+id/com"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="#FFF" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="COMMITTEE DETAILS"
+        android:id="@+id/com_det"
         android:layout_gravity="left"
+        android:textSize="15sp"
+        android:textColor="#FFF" />
+
+     </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#AA65737e"
+        android:layout_marginTop="10dp">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bills"
+        android:id="@+id/bills"
+        android:layout_gravity="center"
         android:textSize="20sp"
         android:textColor="#FFF" />
 
@@ -83,11 +128,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="5dp"
-        android:text="represent"
-        android:id="@+id/textView6"
+        android:layout_marginTop="10dp"
+        android:text="BILL DETAILS"
+        android:id="@+id/bills_contents"
         android:layout_gravity="left"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="#FFF" />
 
-</LinearLayout>
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+

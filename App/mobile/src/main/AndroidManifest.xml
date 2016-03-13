@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cs160.arman.represent">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,12 +24,10 @@
         </activity>
         <activity
             android:name=".candidate_list"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".zip"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service android:name=".PhoneToWatchService" />
         <!-- Listeners are special services that need to be declared like below, as BIND_LISTENER -->
@@ -39,8 +41,19 @@
 
         <activity
             android:name=".detailed_view"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB6iSQGryjI1WlYF4tM7ZTYZZwInv4xn1Q" />
+
+        <service
+            android:name=".CurrentLocation"
+            android:enabled="true"
+            android:exported="true"></service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ff5e4c16fb1def3469768b13583fe12e54406d9b" />
     </application>
 
 </manifest>

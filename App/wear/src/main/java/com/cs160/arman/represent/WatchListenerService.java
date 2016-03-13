@@ -37,17 +37,24 @@ public class WatchListenerService extends WearableListenerService {
         if( messageEvent.getPath().equalsIgnoreCase( FRED_FEED ) ) {
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
             Intent intent = new Intent(this, sen_1.class );
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             //you need to add this flag since you're starting a new activity from a service
-            intent.putExtra("CAT_NAME", "Fred");
+            System.out.println("jafferrr");
+            intent.putExtra("CAT_NAME", value);
             Log.d("T", "about to start watch MainActivity with CAT_NAME: Fred");
+            System.out.println(value);
             startActivity(intent);
+
+
+
         } else if (messageEvent.getPath().equalsIgnoreCase( LEXY_FEED )) {
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
             Intent intent = new Intent(this, sen_1.class );
-            intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             //you need to add this flag since you're starting a new activity from a service
-            intent.putExtra("CAT_NAME", "Lexy");
+            System.out.println("ARMMMANNNNNN");
+            intent.putExtra("CAT_NAME", value);
+            System.out.println(value);
             Log.d("T", "about to start watch MainActivity with CAT_NAME: Lexy");
             startActivity(intent);
         } else {

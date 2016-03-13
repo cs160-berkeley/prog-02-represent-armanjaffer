@@ -11,6 +11,9 @@ import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
+
+import java.util.ArrayList;
+
 public class PhoneToWatchService extends Service {
 
     private GoogleApiClient mApiClient;
@@ -45,19 +48,28 @@ public class PhoneToWatchService extends Service {
         // which was passed over when we called startService
         // Bundle extras = intent.getExtras();
         final String catName = "Fred";
+        System.out.println("IN PHONE TO WATCH");
+        try{
+            final String msg = intent.getStringExtra("cong");
 
-        // Send the message with the cat name
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //first, connect to the apiclient
-                mApiClient.connect();
-                //now that you're connected, send a massage with the cat name
-                sendMessage("/" + catName, catName);
-            }
-        }).start();
+            // Send the message with the cat name
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //first, connect to the apiclient
+                    mApiClient.connect();
+                    //now that you're connected, send a massage with the cat name
+                    sendMessage("/" + catName, msg);
+                    System.out.println(msg);
+                }
+            }).start();
 
-        return START_STICKY;
+            return START_STICKY;
+        }catch (Exception e){
+            System.out.println("NO CONGGGGGGG");
+            return START_STICKY;
+        }
+
     }
 
     @Override //remember, all services need to implement an IBiner
@@ -79,7 +91,6 @@ public class PhoneToWatchService extends Service {
                             mApiClient, node.getId(), path, text.getBytes() ).await();
                     //4 arguments: api client, the node ID, the path (for the listener to parse),
                     //and the message itself (you need to convert it to bytes.)
-                    System.out.println(path);
                 }
             }
         }).start();

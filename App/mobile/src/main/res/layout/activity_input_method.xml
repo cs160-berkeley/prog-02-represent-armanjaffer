@@ -13,16 +13,14 @@
 
 
 
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="represent"
-        android:id="@+id/textView"
+        android:id="@+id/sen_1"
         android:textSize="50sp"
-        android:textColor="#F00"
+        android:textColor="#ff6961"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
@@ -34,8 +32,8 @@
         android:text="use current location"
         android:textSize="20sp"
         android:id="@+id/button"
-        android:background="#F00"
-        android:layout_below="@+id/textView"
+        android:background="#ff6961"
+        android:layout_below="@+id/sen_1"
         android:layout_marginTop="100dp"
         android:textAllCaps="false"
         android:textColor="#FFF" />
@@ -46,11 +44,20 @@
         android:text="manually enter location"
         android:textSize="20sp"
         android:id="@+id/button1"
-        android:background="#F00"
+        android:background="#ff6961"
         android:layout_below="@+id/button"
         android:layout_marginTop="50dp"
         android:textAllCaps="false"
         android:textColor="#FFF" />
+
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:visibility="gone"
+        android:id="@+id/twitter_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="50dp"
+        android:layout_centerInParent="true"/>
 
 
 

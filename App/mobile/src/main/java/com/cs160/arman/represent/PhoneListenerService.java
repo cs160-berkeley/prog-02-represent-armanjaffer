@@ -11,8 +11,11 @@ import android.widget.Toast;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
+import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -29,28 +32,62 @@ private static final String TOAST = "/send_toast";
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         Log.d("T", "in PhoneListenerService, got: " + messageEvent.getPath());
-        if( true ) {
+        if( !messageEvent.getPath().toString().equals("/Fred") ) {
+            try{
             System.out.println("Got to Phone Listener");
             // Value contains the String we sent over in WatchToPhoneService, "good job"
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
             System.out.println(value);
-            if (Integer.valueOf(value) != -1) {
+            if (value.length() > 3) {
                 Intent intent = new Intent(this, detailed_view.class);
-                intent.putExtra("number", value);
+                ArrayList<String> arr_list = new ArrayList<String>(Arrays.asList(value.split(",")));
+                intent.putExtra("lst", arr_list);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-            }else{
+            }else {
                 System.out.println("THIS IS IN PHONE LISTER AND RIGHT IF");
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                Random r_gen = new Random();
-                int rx = r_gen.nextInt(122 - 74);
-                int ry = r_gen.nextInt(40 - 32);
-                int x = 74 + rx;
-                int y = 32 + ry;
-                String toast_text = "Coordinates: (" + Integer.toString(x) + ", " + Integer.toString(y) + ")";
-                Toast toast = Toast.makeText(context, toast_text, duration);
-                toast.show();
+                 Log.i("HELLOFROM THE OUTSIDE","WORLD");
+                int westBound = -117;
+                int eastBound = -81;
+                int northBound = 41;
+                int southBound = 33;
+                Random rand = new Random();
+                float tempLat = (-81 - (rand.nextFloat() * 36));
+                float tempLon = 33+(rand.nextFloat() * 8);
+                DecimalFormat df = new DecimalFormat("0.####");
+                df.setRoundingMode(RoundingMode.DOWN);
+                double outputLon = Double.valueOf(df.format(tempLat));
+                double outputLat = Double.valueOf(df.format(tempLon));
+                Intent sendIntent = new Intent(getBaseContext(), candidate_list.class);
+                sendIntent.putExtra("type", "lat");
+                sendIntent.putExtra("lat", Double.toString(outputLat));
+                sendIntent.putExtra("lon", Double.toString(outputLon));
+                sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Log.d("COOORDINATESSS", String.valueOf(outputLat) + "," + String.valueOf(outputLon));
+                startActivity(sendIntent);
+                Log.i("HELLO", "WORLD");
+//
+//
+//
+//
+//
+//
+//
+//
+//                Random r_gen = new Random();
+//                int rx = r_gen.nextInt(122 - 74);
+//                int ry = r_gen.nextInt(40 - 32);
+//                int x = 74 + rx;
+//                int y = 32 + ry;
+//                String toast_text = "Coordinates: (" + Integer.toString(x) + ", " + Integer.toString(y) + ")";
+//                Toast toast = Toast.makeText(context, toast_text, duration);
+//                toast.show();
+            }
+            }
+            catch(Exception e){
+                System.out.println("THIS MAY BE A GOOD THING OR A BAD ONE");
             }
             // Make a toast with the String
 

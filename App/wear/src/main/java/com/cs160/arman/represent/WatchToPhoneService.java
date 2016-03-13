@@ -32,6 +32,7 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
     private List<Node> nodes = new ArrayList<>();
     final Service _this = this;
     private String _person = null;
+    private String _deets;
 
     @Override
     public void onCreate() {
@@ -47,6 +48,7 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
         _person = extras.getString("number");
+        _deets = extras.getString("content");
         System.out.println("This is person "+ _person);
         mWatchApiClient = new GoogleApiClient.Builder( this )
                 .addApi( Wearable.API )
@@ -83,7 +85,7 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
                         Log.d("T", "found nodes");
                         //when we find a connected node, we populate the list declared above
                         //finally, we can send a message
-                        sendMessage("/send_toast", _person);
+                        sendMessage("/send_toast", _deets);
                         Log.d("T", "sent");
                         _this.stopSelf();
                     }

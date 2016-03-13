@@ -20,6 +20,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import io.fabric.sdk.android.Fabric;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 import java.util.Arrays;
@@ -27,6 +33,16 @@ import java.util.List;
 
 public class sen_1 extends FragmentActivity implements SensorEventListener {
 
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "jGy3JZRfFkBMOiBCGOdDMpyUr";
+    private static final String TWITTER_SECRET = "VFnZxDUBrqF5eUvucb9URVm5OnmXNtgPl2tI75pTwWkAEWpw21 ";
+
+
+    public boolean on = false;
+    public static ArrayList<String> bad_boy_bob;
+    public static  String full_ad;
+    public static String full_score;
+    public static String winner;
 
 
     /** Minimum movement force to consider. */
@@ -118,20 +134,9 @@ public class sen_1 extends FragmentActivity implements SensorEventListener {
     }
 
     private void shake_that(){
-        Random randomGenerator = new Random();
-        int randomInt = randomGenerator.nextInt(10);
-        int obama = 45 + randomInt;
-        int romney = 55 - randomInt;
-        String to_set = Integer.toString(obama)+ " (Obama) to " + Integer.toString(romney) + " (Romney)";
-        String[] ch2 = {"Alameda County, CA", "San Bernadino County, CA", "Santa Clara County, CA", "Allegheny County, PA"};
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.frag_3, null);
-        TextView apple = (TextView) findViewById(R.id.chicken1);
-        TextView carrot = (TextView) findViewById(R.id.chicken2);
-        apple.setText(to_set);
-        carrot.setText(ch2[randomInt % 4]);
         Intent intent = new Intent(this, WatchToPhoneService.class);
         intent.putExtra("number", "-1");
+        intent.putExtra("content", "");
         startService(intent);
     }
 
@@ -157,14 +162,48 @@ public class sen_1 extends FragmentActivity implements SensorEventListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        on = true;
+        System.out.println("IN ON CREATE");
         super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_sen_1);
-
+        System.out.println("IN ON CREATE");
         final DotsPageIndicator mPageIndicator;
         final GridViewPager mViewPager;
 
+        Intent poop = getIntent();
+        System.out.println("GOT INTENT");
+        String papa = poop.getStringExtra("CAT_NAME");
+
+
+        String[] func = papa.split("%");
+
+        full_score = func[func.length - 1];
+        full_ad = func[func.length - 2];
+        winner = func[func.length - 3];
+
+        System.out.println(full_score);
+        System.out.println(full_ad);
+
+        ArrayList<String> chicken = new ArrayList<String>(Arrays.asList(papa.split("%")));
+        System.out.println(chicken.get(chicken.size() - 1));
+        System.out.println(chicken.get(chicken.size() - 2));
+        chicken.remove(chicken.size() - 1);
+        chicken.remove(chicken.size() - 1);
+        chicken.remove(chicken.size() - 1);
+
+
+        bad_boy_bob = chicken;
+//
+//        ArrayList<String> chicken_little = new ArrayList<String>();
+//        for (int i = 0; i < chicken.size(); i++)
+//            chicken_little.add("pres view");
+
+        chicken.add("placeholder");
         final String[][] data = {
-                { "Row 0, Col 0", "Row 0, Col 1", "Row 0, Col 2", "Row 0, Col 3"},
+                chicken.toArray(new String[chicken.size()])
+//                chicken_little.toArray(new String[chicken.size()])
         };
 
         // Get UI references
@@ -188,8 +227,6 @@ public class sen_1 extends FragmentActivity implements SensorEventListener {
 
 
     }
-
-
 
 
     @Override
@@ -222,12 +259,14 @@ public class sen_1 extends FragmentActivity implements SensorEventListener {
 
         @Override
         public Fragment getFragment(int row, int column) {
-            return ArmanCardFragment.newInstance(row, column);
+            System.out.println("THIS IS FULL AD" + full_ad);
+            System.out.println("THIS IS FULL SCORE" + full_score);
+            return ArmanCardFragment.newInstance(row, column, bad_boy_bob, full_ad, full_score, winner);
         }
 
         @Override
         public int getRowCount() {
-            return mData.length;
+            return mData.length ;
         }
 
         @Override
@@ -235,4 +274,10 @@ public class sen_1 extends FragmentActivity implements SensorEventListener {
             return mData[row].length;
         }
     }
+
+
+    public boolean isOn(){
+        return on;
+    }
+
 }

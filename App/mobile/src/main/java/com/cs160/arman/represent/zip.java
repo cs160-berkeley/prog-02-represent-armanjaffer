@@ -21,7 +21,7 @@ public class zip extends AppCompatActivity {
                 if (zip.getText().toString().length() == 5) {
                     Intent intent = new Intent(v.getContext(), candidate_list.class);
                     intent.putExtra("type", "zip");
-                    intent.putExtra("zip", Integer.parseInt(zip.getText().toString()));
+                    intent.putExtra("zip", zip.getText().toString());
                     v.getContext().startActivity(intent);
                 }
             }
